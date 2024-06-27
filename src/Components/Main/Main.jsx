@@ -1,12 +1,20 @@
-import React from 'react'
-import NavBar from '../Navbar/NavBar'
-import Slider from '../Slider/Slider'
+import React from "react";
+import Navbar from "../Navbar/Navbar";
+import Slider from "../Slider/Slider";
+import NavigateButtons from "../NavigateButtons/NavigateButtons";
+import ProductSection from "../ProductSection/ProductSection";
+import Footer from "../Footer/Footer";
 
-export default function Main() {
+const Main = () => {
   return (
     <div>
-    <NavBar/>
-    <Slider/>
+      <Navbar></Navbar>
+      <Slider></Slider>
+      <NavigateButtons></NavigateButtons>
+      <ProductSection></ProductSection>
+      <Footer></Footer>
     </div>
-  )
-}
+  );
+};
+
+export default Main;

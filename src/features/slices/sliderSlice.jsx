@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { sliderData } from "../../assets/data/dummyData";
+
 export const sliderSlice = createSlice({
   name: "slider",
   initialState: {
     value: 0,
     length: sliderData.length,
   },
- 
   reducers: {
-    
     nextSlide(state, action) {
       state.value = action.payload > state.length - 1 ? 0 : action.payload;
     },
@@ -20,7 +19,6 @@ export const sliderSlice = createSlice({
       state.value = slide;
     },
   },
-   
 });
 
 export const { nextSlide, prevSlide, dotSlide } = sliderSlice.actions;

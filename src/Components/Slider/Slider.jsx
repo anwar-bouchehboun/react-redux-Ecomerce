@@ -7,24 +7,25 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { sliderData } from "../../assets/data/dummyData";
 
-export default function Slider() {
- const slideIndex = useSelector((state) => state.slider.value);  
+const Slider = () => {
+  const slideIndex = useSelector((state) => state.slider.value);
   const dispatch = useDispatch();
+
   return (
     <div className="relative pb-4">
       <div>
-        {sliderData.map((item,index) => {
+        {sliderData.map((item) => {
           return (
             <div
               key={item.id}
               className={
-                index === slideIndex
-                  ? "opacity-100 duration-300 ease-in-out scale-100"
-                  : "opacity-0 duration-300 ease-in-out scale-95"
+                parseInt(item.id) === slideIndex
+                  ? "opacity-100 duration-700 ease-in-out scale-100"
+                  : "opacity-0 duration-700 ease-in-out scale-95"
               }
             >
               <div>
-                {index === slideIndex && (
+                {parseInt(item.id) === slideIndex && (
                   <img
                     className="h-[850px] w-full"
                     src={item.img}
@@ -34,7 +35,7 @@ export default function Slider() {
               </div>
               <div className="absolute top-44 mx-auto inset-x-1/4">
                 <p className="text-white text-4xl font-inter font-bold tracking-normal leading-none">
-                  {index === slideIndex && item.text}
+                  {parseInt(item.id) === slideIndex && item.text}
                 </p>
               </div>
             </div>
@@ -43,8 +44,6 @@ export default function Slider() {
       </div>
       <div className="flex absolute bottom-12  left-[45%]">
         {sliderData.map((dot, index) => {
-           
-
           return (
             <div className="mr-4" key={dot.id}>
               <div
@@ -53,9 +52,7 @@ export default function Slider() {
                     ? "bg-green-300 rounded-full p-2 cursor-pointer"
                     : "bg-white rounded-full p-2 cursor-pointer"
                 }
-                onClick={() => dispatch(dotSlide(index))
-                   
-                }
+                onClick={() => dispatch(dotSlide(index))}
               ></div>
             </div>
           );
@@ -103,4 +100,6 @@ export default function Slider() {
       </div>
     </div>
   );
-}
+};
+
+export default Slider;
